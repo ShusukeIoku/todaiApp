@@ -2,20 +2,28 @@
   <div class="problem">
     <a
       :href="
-        'https://twitter.com/intent/tweet?text=' +
+        'https://twitter.com/intent/tweet?text=【' +
+          problem.subject +
+          ' ' +
+          problem.genre +
+          '】「' +
           problem.title +
-          '%20-%20alphaで解く&url=https://alpha-class-project.web.app/problem/' +
+          '」' +
+          '%20-%20todaiAppで解く&url=https://todaiapp.com/problem/' +
           $route.params.id
       "
       target="_black"
     >
-      <button class="flex btn-with-img tweet-btn bg"  :class="{leanrightbg:!currentUser}">
+      <button
+        class="flex btn-with-img tweet-btn bg"
+        :class="{ leanrightbg: !currentUser }"
+      >
         <div class="img">
           <fa :icon="['fab', 'twitter']" />
         </div>
         <p class="txt">問題をシェア</p>
       </button>
-      <button class="btn tweet-btn sm" :class="{leanright:!currentUser}">
+      <button class="btn tweet-btn sm" :class="{ leanright: !currentUser }">
         <div class="img">
           <fa :icon="['fab', 'twitter']" />
         </div>
@@ -25,7 +33,7 @@
     <div class="title">
       <div class="subjects">
         <span>{{ problem.subject }}</span>
-        <span>＞</span>
+        <span>|</span>
         <span>{{ problem.genre }}</span>
       </div>
       <h2>{{ problem.title }}</h2>
@@ -37,15 +45,17 @@
           <div
             class="badge contribution"
             :class="{
-              padawan: problemsCreated.length < 3,
+              padawan: problemsSolved.length + problemsCreated.length * 3 < 4,
               intermediate:
-                problemsCreated.length >= 3 && problemsCreated.length < 10,
+                problemsSolved.length + problemsCreated.length * 3 >= 4 &&
+                problemsSolved.length + problemsCreated.length * 3 < 10,
               master:
-                problemsCreated.length >= 10 && problemsCreated.length < 20,
-              lord: problemsCreated.length >= 20
+                problemsSolved.length + problemsCreated.length * 3 >= 10 &&
+                problemsSolved.length + problemsCreated.length * 3 < 20,
+              lord: problemsSolved.length + problemsCreated.length * 3 >= 20
             }"
           >
-            {{ problemsCreated.length }}
+            {{ problemsSolved.length + problemsCreated.length * 3 }}
           </div>
           <a
             v-if="user.twitter"
@@ -57,16 +67,20 @@
             </div>
           </a>
         </div>
-        <router-link :to="'/user/'+uid">
-          <div class="txts">
-            <p v-if="user.nickname" class="name">{{ user.nickname }}</p>
-            <p v-else class="name">{{ user.name }}</p>
-            <p class="info">
-              <span v-if="user.school">{{ user.school }}</span>
-              <span v-if="user.grade"> ({{ user.grade }})</span>
-            </p>
-          </div>
+        <!--
+        <router-link :to="'/user-public/' + uid">
+        -->
+        <div class="txts">
+          <p v-if="user.nickname" class="name">{{ user.nickname }}</p>
+          <p v-else class="name">{{ user.name }}</p>
+          <p class="info">
+            <span v-if="user.school">{{ user.school }}</span>
+            <span v-if="user.grade"> ({{ user.grade }})</span>
+          </p>
+        </div>
+        <!--
         </router-link>
+        -->
       </div>
     </div>
     <nav class="flex page-nav">
@@ -180,6 +194,8 @@ import { auth } from "@/main";
 import markdownIt from "markdown-it";
 import "katex/dist/katex.min.css";
 import mk from "markdown-it-katex";
+import mv from "markdown-it-video";
+import mf from "markdown-it-footnote";
 import sanitizer from "markdown-it-sanitizer";
 export default {
   data() {
@@ -188,6 +204,7 @@ export default {
       aeditable: true,
       currentUser: {},
       problemsCreated: [],
+      problemsSolved: [],
       problem: {},
       user: {},
       uid: "",
@@ -203,7 +220,25 @@ export default {
       })
         .use(sanitizer)
         .use(mk, { throwOnError: false, errorColor: " #cc0000" })
+        .use(mv, { youtube: { width: 250, height: 150 } })
+        .use(mf)
     };
+  },
+  head: {
+    title() {
+      return {
+        inner: "問題ページ"
+      };
+    },
+    meta: [
+      { name: "description", content: "問題ページ" },
+      { property: "og:title", content: "問題ページ" },
+      { property: "og:description", content: "問題ページ" },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://todaiapp.com/" },
+      { property: "og:image", content: "../../public/img/logo.png" },
+      { name: "twitter:card", content: "summary" }
+    ]
   },
   components: {
     AnswerItem
@@ -238,6 +273,14 @@ export default {
           .then(problems => {
             problems.forEach(problem => {
               this.problemsCreated.push(problem.data());
+            });
+          });
+        db.collection("answers")
+          .where("user", "==", problem.data().user)
+          .get()
+          .then(problems => {
+            problems.forEach(problem => {
+              this.problemsSolved.push(problem.data());
             });
           });
       });
@@ -317,7 +360,7 @@ export default {
 .problem
   .tweet-btn
     position fixed
-    top 15px
+    top 10px
     right 170px
     font-size .8rem
     .icon

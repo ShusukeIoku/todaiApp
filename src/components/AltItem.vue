@@ -3,7 +3,7 @@
     <div class="flex">
       <div class="subjects">
         <span>{{ answer.problemSubject }}</span>
-        <span>＞</span>
+        <span>|</span>
         <span>{{ answer.problemGenre }}</span>
       </div>
       <p>{{ answer.problemTitle }}</p>

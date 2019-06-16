@@ -1,18 +1,21 @@
 <template>
-  <div v-if="currentUser && currentUser.uid == user.id" class="user">
+  <div class="user">
     <div class="title flex">
       <div class="img" :style="'background-image: url(' + user.photoURL + ');'">
         <div
           class="badge contribution"
           :class="{
-            padawan: problemsCreated.length < 3,
+            padawan: problemsSolved.length + problemsCreated.length * 3 < 4,
             intermediate:
-              problemsCreated.length >= 3 && problemsCreated.length < 10,
-            master: problemsCreated.length >= 10 && problemsCreated.length < 20,
-            lord: problemsCreated.length >= 20
+              problemsSolved.length + problemsCreated.length * 3 >= 4 &&
+              problemsSolved.length + problemsCreated.length * 3 < 10,
+            master:
+              problemsSolved.length + problemsCreated.length * 3 >= 10 &&
+              problemsSolved.length + problemsCreated.length * 3 < 20,
+            lord: problemsSolved.length + problemsCreated.length * 3 >= 20
           }"
         >
-          {{ problemsCreated.length }}
+          {{ problemsSolved.length + problemsCreated.length * 3 }}
         </div>
         <a
           v-if="user.twitter"
@@ -185,50 +188,6 @@
       />
     </div>
   </div>
-  <div v-else class="user-public">
-    <div class="title flex">
-      <div class="img" :style="'background-image: url(' + user.photoURL + ');'">
-        <div
-          class="badge contribution"
-          :class="{
-            padawan: problemsCreated.length < 3,
-            intermediate:
-              problemsCreated.length >= 3 && problemsCreated.length < 10,
-            master: problemsCreated.length >= 10 && problemsCreated.length < 20,
-            lord: problemsCreated.length >= 20
-          }"
-        >
-          {{ problemsCreated.length }}
-        </div>
-        <a
-          v-if="user.twitter"
-          :href="'https://twitter.com/' + user.twitter"
-          target="_blank"
-        >
-          <div class="badge twicon">
-            <fa :icon="['fab', 'twitter']" />
-          </div>
-        </a>
-      </div>
-      <div class="txts">
-        <h1 v-if="user.nickname">{{ user.nickname }}</h1>
-        <h1 v-else>{{ user.name }}</h1>
-        <p class="sub-title">
-          <span v-if="user.school">{{ user.school }}</span>
-          <span v-if="user.grade"> ({{ user.grade }})</span>
-        </p>
-      </div>
-    </div>
-    <div class="data-box">
-      <h3>総合データ</h3>
-    </div>
-    <div class="data-box">
-      <h3>出題データ</h3>
-    </div>
-    <div class="data-box">
-      <h3>解答データ</h3>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -256,6 +215,22 @@ export default {
         "大卒"
       ]
     };
+  },
+  head: {
+    title() {
+      return {
+        inner: "ユーザーページ"
+      };
+    },
+    meta: [
+      { name: "description", content: "ユーザーページ" },
+      { property: "og:title", content: "ユーザーページ" },
+      { property: "og:description", content: "ユーザーページ" },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://todaiapp.com/" },
+      { property: "og:image", content: "../../public/img/logo.png" },
+      { name: "twitter:card", content: "summary" }
+    ]
   },
   components: {
     Item,
@@ -359,39 +334,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.img
-  position relative
-  .badge
-    position absolute
-    right -4px
-    text-align center
-    box-shadow 0 0 5px rgba(0,0,0,.5)
-  .twicon
-    background #00aced
-    color white
-    bottom -4px
-    font-size .8rem
-    width 20px
-    height 20px
-    line-height 20px
-    border-radius 50%
-    cursor pointer
-  .contribution
-    top -4px
-    color white
-    font-size .7rem
-    padding 0 3px
-    border-radius 3px
-  .padawan
-    background white
-    color #555
-  .intermediate
-    background green
-  .master
-    background blue
-  .lord
-    background black
-    color red
 .sm-page-nav
   display none
 @media (max-width 768px)

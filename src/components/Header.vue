@@ -94,7 +94,7 @@ export default {
 
 <style lang="stylus" scoped>
 header
-  padding 15px 2%
+  padding 10px 2%
   display flex
   flex-wrap nowrap
   justify-content space-between

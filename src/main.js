@@ -4,7 +4,9 @@ import router from "./router";
 import "./registerServiceWorker";
 import { firestorePlugin } from "vuefire";
 import firebase from "firebase/app";
+import "firebase/auth";
 import "firebase/firestore";
+import VueAnalytics from "vue-analytics";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faUser,
@@ -21,11 +23,23 @@ import {
   faHeart,
   faChevronUp,
   faChevronDown,
-  faDownload
+  faDownload,
+  faDatabase
 } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Toasted from "vue-toasted";
+import VueHead from "vue-head";
+import Ads from "vue-google-adsense";
+
+Vue.use(require("vue-script2"));
+Vue.use(Ads.Adsense);
+Vue.use(Ads.InArticleAdsense);
+Vue.use(Ads.InFeedAdsense);
+
+Vue.use(VueHead, {
+  separator: " | "
+});
 
 library.add(
   faUser,
@@ -43,7 +57,8 @@ library.add(
   faTwitter,
   faChevronUp,
   faChevronDown,
-  faDownload
+  faDownload,
+  faDatabase
 );
 
 Vue.component("fa", FontAwesomeIcon);
@@ -52,16 +67,21 @@ Vue.use(firestorePlugin);
 Vue.use(Toasted);
 
 firebase.initializeApp({
-  apiKey: "AIzaSyATUJHvu4ajMHACmN4AADVtZPW6ZERcFic",
-  authDomain: "alpha-class-project.firebaseapp.com",
-  databaseURL: "https://alpha-class-project.firebaseio.com",
-  projectId: "alpha-class-project",
-  storageBucket: "",
-  messagingSenderId: "445554561949",
-  appId: "1:445554561949:web:7024cc4c49e23b70"
+  apiKey: "AIzaSyBzC1UsJJBYTkpeZMJtQSFIBr1tSG8A9pI",
+  authDomain: "todaiapp.firebaseapp.com",
+  databaseURL: "https://todaiapp.firebaseio.com",
+  projectId: "todaiapp",
+  storageBucket: "todaiapp.appspot.com",
+  messagingSenderId: "360241228373",
+  appId: "1:360241228373:web:e657985af99244db"
 });
 export const db = firebase.firestore();
 export const auth = firebase.auth();
+
+Vue.use(VueAnalytics, {
+  id: "UA-XXX-X",
+  router
+});
 
 Vue.config.productionTip = false;
 

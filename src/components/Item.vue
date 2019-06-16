@@ -3,7 +3,7 @@
     <div class="flex">
       <div class="subjects">
         <span>{{ problem.subject }}</span>
-        <span>＞</span>
+        <span>|</span>
         <span>{{ problem.genre }}</span>
       </div>
       <p>{{ problem.title }}</p>
@@ -33,7 +33,9 @@ export default {
   position relative
   .subjects
     margin 11px 5px 0 0
-    padding 0 8px
+    width 100px
+    min-width 100px
+    text-align center
     border 1px solid #555
     border-radius 20px
     font-size .7rem

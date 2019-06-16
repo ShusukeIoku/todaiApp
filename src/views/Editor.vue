@@ -119,7 +119,9 @@
       </div>
       <button
         class="submit"
-        :class="{ready:selectedSubject && selectedGenre && title && content && answer}"
+        :class="{
+          ready: selectedSubject && selectedGenre && title && content && answer
+        }"
         @click="saveProblem"
       >
         問題を公開する
@@ -132,85 +134,81 @@
         <a href="#head2"><li>ヘッダーを書く</li></a>
         <a href="#head5"><li>リストをつくる</li></a>
         <a href="#head3"><li>リンクをつくる</li></a>
+        <a href="#head8"><li>引用する</li></a>
         <a href="#head7"><li>画像を貼り付ける</li></a>
         <a href="#head4"><li>数式を書く</li></a>
         <a href="#head6"><li>表を書く</li></a>
       </div>
       <h2 id="head1">Markdownを使ってみよう！</h2>
-      <p>todaiForumでは、問題や解答を「マークダウン」という形式で編集します。
-        マークダウンについて聞いたことがない人も、使い方はとても簡単なので、心配は無用です。</p>
-      <p>以下では、問題作成や解答の編集に必要な限度でマークダウンの書き方を説明します。全般的に知りたい方は、<a href="https://www.markdown.jp/syntax/">こちらのページ</a>を参考にしてください。</p>
+      <p>
+        todaiForumでは、問題や解答を「マークダウン」という形式で編集します。
+        マークダウンについて聞いたことがない人も、使い方はとても簡単なので、心配は無用です。
+      </p>
+      <p>
+        以下では、問題作成や解答の編集に必要な限度でマークダウンの書き方を説明します。全般的に知りたい方は、<a
+          href="https://www.markdown.jp/syntax/"
+          >こちらのページ</a
+        >を参考にしてください。
+      </p>
       <h2 id="head2">ヘッダーを書く</h2>
-      <p>ヘッダーにしたい文の頭にシャープ（#）をつけます。シャープを増やすほどレベルが下がります。</p>
+      <p>
+        ヘッダーにしたい文の頭にシャープ（#）をつけます。シャープを増やすほどレベルが下がります。
+      </p>
       <div class="flex edit-box">
-        <textarea type="text" name="content" v-model="ex1">
-        </textarea>
-        <div
-          class="view body"
-          v-html="md.render(ex1)"
-        >
-        </div>
+        <textarea type="text" name="content" v-model="ex1"> </textarea>
+        <div class="view body" v-html="md.render(ex1)"></div>
       </div>
       <h2 id="head5">リストをつくる</h2>
       <p></p>
       <div class="flex edit-box">
-        <textarea type="text" name="content" v-model="ex4">
-        </textarea>
-        <div
-          class="view body"
-          v-html="md.render(ex4)"
-        >
-        </div>
+        <textarea type="text" name="content" v-model="ex4"> </textarea>
+        <div class="view body" v-html="md.render(ex4)"></div>
       </div>
       <h2 id="head3">リンクをつくる</h2>
       <p>[リンクのテキスト](リンク先のURL)のように書きます。</p>
       <div class="flex edit-box">
-        <textarea type="text" name="content" v-model="ex2">
-        </textarea>
-        <div
-          class="view body"
-          v-html="md.render(ex2)"
-        >
-        </div>
+        <textarea type="text" name="content" v-model="ex2"> </textarea>
+        <div class="view body" v-html="md.render(ex2)"></div>
+      </div>
+      <h2 id="head8">引用する</h2>
+      <div class="flex edit-box">
+        <textarea type="text" name="content" v-model="ex7"> </textarea>
+        <div class="view body" v-html="md.render(ex7)"></div>
       </div>
       <h2 id="head7">画像を貼り付ける</h2>
-      <p>![画像の名前](画像のURL)のように書きます。そのため、画像を添付するには、まず画像のURLを入手しなければなりません。
-        もし、スマホなどで撮影した画像を使いたい場合は、<a href="https://imgbb.com/">imgbb</a>などに画像をアップロードして、URLをつくる必要があります。
+      <p>
+        ![画像の名前](画像のURL)のように書きます。そのため、画像を添付するには、まず画像のURLを入手しなければなりません。
+        もし、スマホなどで撮影した画像を使いたい場合は、<a
+          href="https://imgbb.com/"
+          >imgbb</a
+        >などに画像をアップロードして、URLをつくる必要があります。
       </p>
       <div class="flex edit-box">
-        <textarea type="text" name="content" v-model="ex6">
-        </textarea>
-        <div
-          class="view body"
-          v-html="md.render(ex6)"
-        >
-        </div>
+        <textarea type="text" name="content" v-model="ex6"> </textarea>
+        <div class="view body" v-html="md.render(ex6)"></div>
       </div>
       <h2 id="head4">数式を書く</h2>
-      <p>数式は「Latex（レイテック, ラテフなどと読む）」という書き方を使います。
+      <p>
+        数式は「Latex（レイテック, ラテフなどと読む）」という書き方を使います。
         ２種類の書き方があります。
         文章内で数字を使いたい場合には「$x^2$」のように左右を「$」で囲います。
         数式だけで一行分を使いたい場合には、下のように上下を「$$」で囲います。
-      <p>分数やインテグラル、シグマ、行列なども綺麗に書けるので、<a href="https://medemanabu.net/latex/operators/">こちらのサイト</a>などを参考にしつつ、ぜひ積極的に使ってみてください。</p>
+      </p>
+
+      <p>
+        分数やインテグラル、シグマ、行列なども綺麗に書けるので、<a
+          href="https://medemanabu.net/latex/operators/"
+          >こちらのサイト</a
+        >などを参考にしつつ、ぜひ積極的に使ってみてください。
+      </p>
       <div class="flex edit-box">
-        <textarea type="text" name="content" v-model="ex3">
-        </textarea>
-        <div
-          class="view body"
-          v-html="md.render(ex3)"
-        >
-        </div>
+        <textarea type="text" name="content" v-model="ex3"> </textarea>
+        <div class="view body" v-html="md.render(ex3)"></div>
       </div>
       <h2 id="head6">表を書く</h2>
-      <p></p>
       <div class="flex edit-box">
-        <textarea type="text" name="content" v-model="ex5">
-        </textarea>
-        <div
-          class="view body"
-          v-html="md.render(ex5)"
-        >
-        </div>
+        <textarea type="text" name="content" v-model="ex5"> </textarea>
+        <div class="view body" v-html="md.render(ex5)"></div>
       </div>
     </div>
   </div>
@@ -222,16 +220,37 @@ import { auth } from "@/main";
 import markdownIt from "markdown-it";
 import "katex/dist/katex.min.css";
 import mk from "markdown-it-katex";
+import mv from "markdown-it-video";
+import mf from "markdown-it-footnote";
 import sanitizer from "markdown-it-sanitizer";
 export default {
+  head: {
+    title() {
+      return {
+        inner: "問題を作成する"
+      };
+    },
+    meta: [
+      { name: "description", content: "問題を作成する" },
+      { property: "og:title", content: "問題を作成する" },
+      { property: "og:description", content: "問題を作成する" },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://todaiapp.com/" },
+      { property: "og:image", content: "../../public/img/logo.png" },
+      { name: "twitter:card", content: "summary" }
+    ]
+  },
   data() {
     return {
       ex1: "# 大きいヘッダー\n## 中くらいのヘッダー\n### 小さいヘッダー",
-      ex2: '[東京大学ホームページ](https://www.u-tokyo.ac.jp/ja/index.html)',
+      ex2: "[東京大学ホームページ](https://www.u-tokyo.ac.jp/ja/index.html)",
       ex3: "$x=5$とする。このとき、\n\n$$\n5x^2+2\n$$\n\nの値を求めよ。",
       ex4: "- 項目1\n- 項目2\n- 項目3",
       ex5: "|a  |b  |c  |\n|---|---|---|\n|1  |2  |3  |\n|4  |5  |6  |",
-      ex6: "![安田講堂](https://upload.wikimedia.org/wikipedia/commons/2/23/Yasuda_Auditorium_-_Tokyo_University_3.jpg)",
+      ex6:
+        "![安田講堂](https://upload.wikimedia.org/wikipedia/commons/2/23/Yasuda_Auditorium_-_Tokyo_University_3.jpg)",
+      ex7:
+        "本文内での引用：\n\n> Lorem ipsum dolor sit amet, purus lectus magna lobortis convallis elit, lobortis volutpat.\n\n脚注による引用：\n\nLorem ipsum dolor sit amet, purus lectus magna lobortis convallis elit, lobortis volutpat[^1].\n\n[^1]: Lorem ipsum dolor sit amet, purus lectus magna lobortis convallis elit, lobortis volutpat.",
       currentUser: {},
       title: "",
       content: "",
@@ -239,6 +258,7 @@ export default {
       activeTab: "editor",
       selectedSubject: "英語",
       selectedGenre: "",
+      isShown: false,
       genreEnglish: [
         "要約",
         "和訳",
@@ -256,11 +276,13 @@ export default {
         typographer: true
       })
         .use(sanitizer)
-        .use(mk, { 
-          throwOnError: false, 
-          errorColor: " #cc0000" 
-          }), isShown: false
-    }
+        .use(mk, {
+          throwOnError: false,
+          errorColor: " #cc0000"
+        })
+        .use(mv, { youtube: { width: 250, height: 150 } })
+        .use(mf)
+    };
   },
   created() {
     auth.onAuthStateChanged(user => {
@@ -269,7 +291,13 @@ export default {
   },
   methods: {
     saveProblem() {
-      if (this.selectedSubject && this.selectedGenre && this.title && this.content && this.answer) {
+      if (
+        this.selectedSubject &&
+        this.selectedGenre &&
+        this.title &&
+        this.content &&
+        this.answer
+      ) {
         const date = new Date();
         db.collection("problems")
           .add({
@@ -292,7 +320,7 @@ export default {
         this.$toasted.show("全ての項目を選択・記入してください。", {
           position: "top-center",
           duration: 1500
-        })
+        });
       }
     },
     createAnswer(id) {

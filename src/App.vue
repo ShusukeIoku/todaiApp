@@ -115,7 +115,7 @@ input,textarea
   &:focus
     outline none
 textarea
-  height 200px
+  height 250px
 select
   border 1px solid #eee
   background #eee
@@ -149,4 +149,43 @@ select
         background #eee
   img
     width 100%
+  blockquote
+    border 1px solid #eee
+    padding 0 15px
+    border-radius 3px
+  strong
+    text-decoration underline
+.img
+  position relative
+  .badge
+    position absolute
+    right -4px
+    text-align center
+    box-shadow 0 0 5px rgba(0,0,0,.5)
+  .twicon
+    background #00aced
+    color white
+    bottom -4px
+    font-size .8rem
+    width 20px
+    height 20px
+    line-height 20px
+    border-radius 50%
+    cursor pointer
+  .contribution
+    top -4px
+    color white
+    font-size .7rem
+    padding 0 3px
+    border-radius 3px
+  .padawan
+    background white
+    color #555
+  .intermediate
+    background green
+  .master
+    background blue
+  .lord
+    background black
+    color red
 </style>

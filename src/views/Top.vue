@@ -110,6 +110,25 @@ import { db } from "../main";
 import Item from "@/components/Item";
 export default {
   name: "top",
+  head: {
+    meta: [
+      {
+        name: "description",
+        content:
+          "todaiAppは、東大志望者＆現役東大生を主体とする相互出題・相互解答コミュニティです。"
+      },
+      { property: "og:title", content: "todaiApp" },
+      {
+        property: "og:description",
+        content:
+          "todaiAppは、東大志望者＆現役東大生を主体とする相互出題・相互解答コミュニティです。"
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://todaiapp.com/" },
+      { property: "og:image", content: "../../public/img/logo.png" },
+      { name: "twitter:card", content: "summary" }
+    ]
+  },
   data() {
     return {
       problems: [],
