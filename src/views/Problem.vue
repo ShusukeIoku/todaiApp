@@ -415,7 +415,7 @@ export default {
     .intermediate
       background green
     .master
-      background blue
+      background purple
     .lord
       background black
       color red
