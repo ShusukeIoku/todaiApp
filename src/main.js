@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import "./registerServiceWorker";
 import { firestorePlugin } from "vuefire";
-import firebase from "firebase/app";
+import firebase from "firebase";
 import "firebase/firestore";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
