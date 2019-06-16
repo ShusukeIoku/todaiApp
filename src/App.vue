@@ -187,5 +187,5 @@ select
     background blue
   .lord
     background black
-    color red
+    color white
 </style>

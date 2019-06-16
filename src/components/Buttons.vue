@@ -4,12 +4,11 @@
       <router-link :to="'/problem/' + problem.id">
         <button class="box-btn">
           <fa icon="pen-alt" />
-          <span v-if="hide"> 解答を確認する</span>
-          <span v-else> 問題をみる</span>
+          <span> 問題をみる</span>
         </button>
       </router-link>
       <button
-        v-if="currentUser && !hide"
+        v-if="currentUser"
         class="box-btn"
         @click="toggleStock"
         :class="{ stocked: stocked }"
@@ -19,7 +18,7 @@
         <span v-else> 問題をストックする</span>
       </button>
     </div>
-    <p v-if="!hide" class="answers">
+    <p class="answers">
       <fa icon="grin" />
       {{ answers.length }}人が解答
     </p>
@@ -30,7 +29,7 @@
 import { db } from "@/main";
 import { auth } from "@/main";
 export default {
-  props: ["problem", "hide"],
+  props: ["problem"],
   data() {
     return {
       currentUser: {},

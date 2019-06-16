@@ -39,16 +39,6 @@
     <nav class="flex page-nav">
       <button
         class="flex btn-with-img"
-        :class="{ active: activeTab == 'info' }"
-        @click="activeTab = 'info'"
-      >
-        <div class="img">
-          <fa icon="info" />
-        </div>
-        <p class="txt">あなたの情報</p>
-      </button>
-      <button
-        class="flex btn-with-img"
         :class="{ active: activeTab == 'created' }"
         @click="activeTab = 'created'"
       >
@@ -71,30 +61,36 @@
         class="flex btn-with-img"
         :class="{ active: activeTab == 'stocked' }"
         @click="activeTab = 'stocked'"
+        v-if="currentUser && currentUser.uid == user.id"
       >
         <div class="img">
           <fa icon="save" />
         </div>
         <p class="txt">ストックした問題</p>
       </button>
-      <button class="flex btn-with-img" @click="signOut">
-        <div class="img">
-          <fa icon="door-open" />
-        </div>
-        <p class="txt">ログアウトする</p>
-      </button>
-    </nav>
-    <nav class="sm-page-nav">
       <button
-        class="btn"
+        class="flex btn-with-img"
         :class="{ active: activeTab == 'info' }"
         @click="activeTab = 'info'"
+        v-if="currentUser && currentUser.uid == user.id"
       >
         <div class="img">
           <fa icon="info" />
         </div>
         <p class="txt">あなたの情報</p>
       </button>
+      <button 
+        class="flex btn-with-img" 
+        @click="signOut"
+        v-if="currentUser && currentUser.uid == user.id"
+      >
+        <div class="img">
+          <fa icon="door-open" />
+        </div>
+        <p class="txt">ログアウト</p>
+      </button>
+    </nav>
+    <nav class="sm-page-nav">
       <button
         class="btn"
         :class="{ active: activeTab == 'created' }"
@@ -117,15 +113,31 @@
       </button>
       <button
         class="btn"
+        :class="{ active: activeTab == 'info' }"
+        @click="activeTab = 'info'"
+        v-if="currentUser && currentUser.uid == user.id"
+      >
+        <div class="img">
+          <fa icon="info" />
+        </div>
+        <p class="txt">あなたの情報</p>
+      </button>
+      <button
+        class="btn"
         :class="{ active: activeTab == 'stocked' }"
         @click="activeTab = 'stocked'"
+        v-if="currentUser && currentUser.uid == user.id"
       >
         <div class="img">
           <fa icon="save" />
         </div>
         <p class="txt">ストック</p>
       </button>
-      <button class="btn" @click="signOut">
+      <button 
+        class="btn" 
+        @click="signOut"
+        v-if="currentUser && currentUser.uid == user.id"
+      >
         <div class="img">
           <fa icon="door-open" />
         </div>
@@ -203,7 +215,7 @@ export default {
       problemsCreated: [],
       problemsSolved: [],
       problemsStocked: [],
-      activeTab: "info",
+      activeTab: "created",
       grades: [
         "中学1年",
         "中学2年",

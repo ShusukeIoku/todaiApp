@@ -2,7 +2,7 @@
   <header>
     <div class="titles">
       <h1 @click="$router.push('/')">todaiApp.</h1>
-      <p class="subtitle">使った分だけ差がつくアプリ</p>
+      <p class="subtitle">最強のライバルに出会おう</p>
     </div>
     <nav class="flex">
       <button

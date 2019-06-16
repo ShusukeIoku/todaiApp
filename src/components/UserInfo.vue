@@ -27,20 +27,16 @@
           </div>
         </a>
       </div>
-      <!--
-        <router-link :to="'/user-public/' + uid">
-        -->
-      <div class="txts">
-        <p v-if="user.nickname" class="name">{{ user.nickname }}</p>
-        <p v-else class="name">{{ user.name }}</p>
-        <p class="info">
-          <span v-if="user.school">{{ user.school }}</span>
-          <span v-if="user.grade"> ({{ user.grade }})</span>
-        </p>
-      </div>
-      <!--
+      <router-link :to="'/user/' + uid">
+        <div class="txts">
+          <p v-if="user.nickname" class="name">{{ user.nickname }}</p>
+          <p v-else class="name">{{ user.name }}</p>
+          <p class="info">
+            <span v-if="user.school">{{ user.school }}</span>
+            <span v-if="user.grade"> ({{ user.grade }})</span>
+          </p>
+        </div>
       </router-link>
-      -->
     </div>
   </div>
 </template>
@@ -95,22 +91,6 @@ export default {
       line-height 16px
       border-radius 50%
       cursor pointer
-    .contribution
-      top -3px
-      color white
-      font-size .6rem
-      padding 0 3px
-      border-radius 3px
-    .padawan
-      background white
-      color #555
-    .intermediate
-      background green
-    .master
-      background purple
-    .lord
-      background black
-      color white
   .txts
     margin-left 5px
     .name

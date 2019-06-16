@@ -22,7 +22,9 @@ import {
   faChevronUp,
   faChevronDown,
   faDownload,
-  faDatabase
+  faDatabase,
+  faCross,
+  faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -56,7 +58,8 @@ library.add(
   faChevronUp,
   faChevronDown,
   faDownload,
-  faDatabase
+  faDatabase,
+  faTimes
 );
 
 Vue.component("fa", FontAwesomeIcon);

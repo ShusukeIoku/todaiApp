@@ -2,7 +2,6 @@ import Vue from "vue";
 import Router from "vue-router";
 import Top from "@/views/Top";
 import User from "@/views/User";
-import UserPublic from "@/views/UserPublic";
 import Editor from "@/views/Editor";
 import Problem from "@/views/Problem";
 
@@ -21,11 +20,6 @@ export default new Router({
       path: "/user/:uid",
       name: "user",
       component: User
-    },
-    {
-      path: "/user-public/:uid",
-      name: "user-public",
-      component: UserPublic
     },
     {
       path: "/edit",
