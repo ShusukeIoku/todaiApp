@@ -110,7 +110,7 @@ export default {
       background purple
     .lord
       background black
-      color red
+      color white
   .txts
     margin-left 5px
     .name
