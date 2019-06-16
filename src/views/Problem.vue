@@ -9,7 +9,7 @@
           '】「' +
           problem.title +
           '」' +
-          '%20-%20todaiAppで解く&url=https://todaiapp.com/problem/' +
+          '%20-%20todaiAppで解く&url=https://todaiapp.tech/problem/' +
           $route.params.id
       "
       target="_black"
