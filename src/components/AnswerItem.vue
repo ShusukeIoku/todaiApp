@@ -17,7 +17,7 @@
 <script>
 import { db } from "@/main";
 import { auth } from "@/main";
-import firebase from "firebase/app";
+import firebase from "firebase";
 import UserInfo from "@/components/UserInfo";
 import markdownIt from "markdown-it";
 import "katex/dist/katex.min.css";

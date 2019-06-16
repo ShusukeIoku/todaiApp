@@ -50,7 +50,7 @@
 <script>
 import { db } from "../main";
 import { auth } from "../main";
-import firebase from "firebase/app";
+import firebase from "firebase";
 
 export default {
   data() {
