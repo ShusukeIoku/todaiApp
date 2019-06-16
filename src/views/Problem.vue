@@ -191,6 +191,7 @@
 import AnswerItem from "@/components/AnswerItem";
 import { db } from "@/main";
 import { auth } from "@/main";
+import { md } from "@/main";
 import markdownIt from "markdown-it";
 import "katex/dist/katex.min.css";
 import mk from "markdown-it-katex";
@@ -217,12 +218,14 @@ export default {
         linkify: true,
         breaks: true,
         typographer: true
-      })
-        .use(sanitizer)
-        .use(mk, { throwOnError: false, errorColor: " #cc0000" })
+      }).use(sanitizer)
+        .use(mk, {
+          throwOnError: false,
+          errorColor: " #cc0000"
+        })
         .use(mv, { youtube: { width: 250, height: 150 } })
         .use(mf)
-    };
+    }
   },
   head: {
     title() {

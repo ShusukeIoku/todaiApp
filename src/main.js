@@ -4,9 +4,7 @@ import router from "./router";
 import "./registerServiceWorker";
 import { firestorePlugin } from "vuefire";
 import firebase from "firebase/app";
-import "firebase/auth";
 import "firebase/firestore";
-import VueAnalytics from "vue-analytics";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faUser,
@@ -77,6 +75,8 @@ firebase.initializeApp({
 });
 export const db = firebase.firestore();
 export const auth = firebase.auth();
+
+import VueAnalytics from "vue-analytics";
 
 Vue.use(VueAnalytics, {
   id: "UA-XXX-X",
