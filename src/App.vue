@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap')
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap')
 body
   margin 0
   font-size 14px
