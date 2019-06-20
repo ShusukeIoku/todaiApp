@@ -10,8 +10,7 @@ footer
   text-align center
   padding 30px 0 50px
   background #eee
-  border-top 1px solid rgba(0,0,0,.05)
-  color rgba(0,0,0,.5)
+  color black
   h1
     margin 0
     font-size 2rem
