@@ -4,13 +4,14 @@
   "alias": "todaiapp.tech",
   "builds": [{ "src": "package.json", "use": "@now/static-build" }],
   "routes": [
+    { "handle": "filesystem" },
     { "src": "^/js/(.*)", "dest": "/js/$1" },
     { "src": "^/css/(.*)", "dest": "/css/$1" },
     { "src": "^/img/(.*)", "dest": "/img/$1" },
     { "src": ".*", "dest": "/index.html" },
     {
-      "src": "/public/manifest.json",
-      "dest": "/public/manifest.json"
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
     },
     {
       "src": "/public/favicon.ico",
@@ -19,7 +20,7 @@
     {
       "src": "/service-worker.js",
       "headers": {
-        "cache-control": "s-maxage=0"
+        "cache-control": "s-maxage=0,must-revalidate"
       },
       "dest": "/service-worker.js"
     }
