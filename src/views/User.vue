@@ -75,9 +75,9 @@
         v-if="currentUser && currentUser.uid == user.id"
       >
         <div class="img">
-          <fa icon="info" />
+          <fa icon="cog" />
         </div>
-        <p class="txt">あなたの情報</p>
+        <p class="txt">設定</p>
       </button>
       <button 
         class="flex btn-with-img" 
@@ -113,17 +113,6 @@
       </button>
       <button
         class="btn"
-        :class="{ active: activeTab == 'info' }"
-        @click="activeTab = 'info'"
-        v-if="currentUser && currentUser.uid == user.id"
-      >
-        <div class="img">
-          <fa icon="info" />
-        </div>
-        <p class="txt">あなたの情報</p>
-      </button>
-      <button
-        class="btn"
         :class="{ active: activeTab == 'stocked' }"
         @click="activeTab = 'stocked'"
         v-if="currentUser && currentUser.uid == user.id"
@@ -132,6 +121,17 @@
           <fa icon="save" />
         </div>
         <p class="txt">ストック</p>
+      </button>
+      <button
+        class="btn"
+        :class="{ active: activeTab == 'info' }"
+        @click="activeTab = 'info'"
+        v-if="currentUser && currentUser.uid == user.id"
+      >
+        <div class="img">
+          <fa icon="cog" />
+        </div>
+        <p class="txt">設定</p>
       </button>
       <button 
         class="btn" 

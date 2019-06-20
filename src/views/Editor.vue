@@ -388,11 +388,15 @@ textarea
   width 96%
   padding 0 2%
   transition all .2s
+  overflow-y scroll
 .shown
   margin-left -100%
 .edit-box
   border 2px solid #eee
   position relative
+  height 350px
+  textarea
+    height calc(100% - 30px)
 .howto
   margin 50px auto
   width 95%

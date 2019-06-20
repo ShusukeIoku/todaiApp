@@ -105,6 +105,6 @@ export default {
   .answers
     margin-right 10px
 .stocked
-  background #555
+  background black
   color white
 </style>

@@ -65,7 +65,7 @@ button
     color black
     font-weight bolder
 .box-btn
-  border 1px solid #555
+  border 1px solid black
   border-radius 3px
   font-size .7rem
   height 2.2rem
@@ -180,7 +180,7 @@ select
     border-radius 3px
   .padawan
     background white
-    color #555
+    color black
   .intermediate
     background green
   .master

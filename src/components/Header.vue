@@ -27,16 +27,20 @@
         </div>
         <p class="txt">サインイン</p>
       </button>
-      <button
+      <a 
+        :href="'/user/' + currentUser.uid"
         v-if="currentUser"
-        class="flex btn-with-img"
-        @click="$router.push('/user/' + currentUser.uid)"
       >
-        <div
-          class="img"
-          :style="'background-image: url(' + currentUser.photoURL + ');'"
-        ></div>
-      </button>
+        <button
+          class="flex btn-with-img"
+          @click="$router.push('/user/' + currentUser.uid)"
+        >
+          <div
+            class="img"
+            :style="'background-image: url(' + currentUser.photoURL + ');'"
+          ></div>
+        </button>
+      </a>
       <button v-else class="sm btn" @click="signIn">
         <div class="img">
           <fa icon="user" />
@@ -68,7 +72,6 @@ export default {
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider).then(result => {
         this.createUser(result.user);
-        this.$router.push("/user/" + result.user.uid);
         this.$toasted.show(result.user.displayName + "さん、こんにちは！", {
           position: "top-center",
           duration: 1500

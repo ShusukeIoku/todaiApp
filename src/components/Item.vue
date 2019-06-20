@@ -6,7 +6,7 @@
         <span>|</span>
         <span>{{ problem.genre }}</span>
       </div>
-      <p>{{ problem.title }}</p>
+      <h3>{{ problem.title }}</h3>
     </div>
     <UserInfo :uid="uid" />
     <Buttons :problem="problem" :noStock="noStock" />
@@ -32,20 +32,20 @@ export default {
   border-bottom 1px solid #eee
   position relative
   .subjects
-    margin 11px 5px 0 0
+    margin 5px 5px 20px 0
     width 100px
     min-width 100px
     text-align center
-    border 1px solid #555
+    border 1px solid #eee
     border-radius 20px
     font-size .7rem
     height 1.5rem
     line-height 1.5rem
     span
       padding 0 1px
-  h2
+  h3
     font-size 1rem
-    margin 0
+    margin 5px 0 0 5px
   &:hover
     background rgba(0,0,0,.03)
   .date

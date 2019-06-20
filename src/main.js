@@ -24,7 +24,8 @@ import {
   faDownload,
   faDatabase,
   faCross,
-  faTimes
+  faTimes,
+  faCog
 } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -59,7 +60,8 @@ library.add(
   faChevronDown,
   faDownload,
   faDatabase,
-  faTimes
+  faTimes,
+  faCog
 );
 
 Vue.component("fa", FontAwesomeIcon);

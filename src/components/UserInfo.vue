@@ -27,7 +27,7 @@
           </div>
         </a>
       </div>
-      <router-link :to="'/user/' + uid">
+      <a :href="'/user/' + uid">
         <div class="txts">
           <p v-if="user.nickname" class="name">{{ user.nickname }}</p>
           <p v-else class="name">{{ user.name }}</p>
@@ -36,7 +36,7 @@
             <span v-if="user.grade"> ({{ user.grade }})</span>
           </p>
         </div>
-      </router-link>
+      </a>
     </div>
   </div>
 </template>
