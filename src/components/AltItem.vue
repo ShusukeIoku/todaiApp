@@ -6,7 +6,7 @@
         <span>|</span>
         <span>{{ answer.problemGenre }}</span>
       </div>
-      <p>{{ answer.problemTitle }}</p>
+      <h3>{{ answer.problemTitle }}</h3>
     </div>
     <UserInfo :uid="uid" />
     <p class="date"></p>
